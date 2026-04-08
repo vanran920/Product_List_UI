@@ -7,61 +7,34 @@ import { useEffect, useState } from "react"
 import ProfileCollection from "./Components/ProfileCollection" 
 const App = () => {
     
-    const products = [
-      {
-        id: 1, 
-        name: "Shoes", 
-        price: 900, 
-        image: shoesImg,
-        ratings: 4.3, 
-        catogory: "Shoes"
-      }, 
-      {
-        id: 2, 
-        name: "T-Shirt", 
-        price: 500, 
-        image: tshirtImg,
-        ratings: 4.8, 
-        catogory: "Clothes"
-      }, 
-      {
-        id: 3, 
-        name: "Watch", 
-        price: 1999, 
-        image: watchImg,
-        ratings: 5.0, 
-        catogory:  "Accessories"
-        
-      }, 
-      {
-        id: 4, 
-        name: "Jeans", 
-        price: 1500, 
-        image: jeansImg,
-        ratings: 4.8, 
-        catogory: "Clothes"
-      }, 
-    ] 
-
-    const [selectCategory, setSelectCategory] = useState("All") 
-
-
     
-  const filterProducts = selectCategory === 'All' ? products : products.filter((item) => item.catogory === selectCategory )
+  const [products, setProducts] = useState([]) 
+  
+  useEffect(() => {
+        fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((data) => {
+          setProducts(data)
+        })
+  },[])
+
+  const [selectCategory, setSelectCategory] = useState("All") 
+  const filterProducts = selectCategory === 'All' ? products : products.filter((item) => item.category === selectCategory )
 
 
   return (
     <div> 
-          <div className="flex gap-4 p-4 " >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm: gap-4 p-4 " >
                 <button onClick={() => setSelectCategory("All")} >All</button>
-                <button onClick={() => setSelectCategory("Shoes")}>Shoes</button>
-                <button onClick={() => setSelectCategory("Clothes")}>Clothes</button>
-                <button onClick={() => setSelectCategory("Accessories")}>Accessories</button>
+                <button onClick={() => setSelectCategory("men's clothing")}>men's clothing</button>
+                <button onClick={() => setSelectCategory("jewelery")}>jewelery</button>
+                <button onClick={() => setSelectCategory("electronics")}>electronics</button>
+                <button onClick={() => setSelectCategory("women's clothing")}>women's clothing</button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-6" >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6" >
               {
                 filterProducts.map((item) => {
-                    return <ProfileCollection  key={item.id} image={item.image} name={item.name} price={item.price} ratings={item.ratings}  />
+                    return <ProfileCollection  key={item.id} image={item.image} name={item.title} price={item.price} ratings={item.rating.rate}  />
                   })
               }
           </div>
