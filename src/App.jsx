@@ -1,5 +1,10 @@
+import shoesImg from "./assets/ShoeImages.jpg";
+import tshirtImg from "./assets/T-ShirtImage.jpg";
+import watchImg from "./assets/WatchImage.jpg";
+import jeansImg from "./assets/Jeans.jpg";
+
 import { useEffect, useState } from "react"
-import ProfileCollection from "./Components/ProfileCollection"
+import ProfileCollection from "./Components/ProfileCollection" 
 const App = () => {
     
     const products = [
@@ -7,7 +12,7 @@ const App = () => {
         id: 1, 
         name: "Shoes", 
         price: 900, 
-        image: "src/assets/ShoeImages.jpg",
+        image: shoesImg,
         ratings: 4.3, 
         catogory: "Shoes"
       }, 
@@ -15,7 +20,7 @@ const App = () => {
         id: 2, 
         name: "T-Shirt", 
         price: 500, 
-        image: "src/assets/T-ShirtImage.jpg",
+        image: tshirtImg,
         ratings: 4.8, 
         catogory: "Clothes"
       }, 
@@ -23,7 +28,7 @@ const App = () => {
         id: 3, 
         name: "Watch", 
         price: 1999, 
-        image: "src/assets/WatchImage.jpg",
+        image: watchImg,
         ratings: 5.0, 
         catogory:  "Accessories"
         
@@ -32,7 +37,7 @@ const App = () => {
         id: 4, 
         name: "Jeans", 
         price: 1500, 
-        image: "src/assets/Jeans.jpg",
+        image: jeansImg,
         ratings: 4.8, 
         catogory: "Clothes"
       }, 
