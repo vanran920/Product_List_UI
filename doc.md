@@ -1,0 +1,7 @@
+ProfileCard
+ ├── ProfileImage
+ ├── ProfileInfo
+ └── FollowButton 
+
+
+ 
